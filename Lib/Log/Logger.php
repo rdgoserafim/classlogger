@@ -18,6 +18,7 @@ class Logger extends \Lib\Log\Log
      * Escreve uma mensagem no arquivo de LOG
      * @param $message = mensagem a ser escrita
      */
+	const PATH_LOG = _PATH_LOG;//endereço da pasta de gravação de arquivos LOGs
 
     public function write()
     {
@@ -34,7 +35,7 @@ class Logger extends \Lib\Log\Log
 			$this->message = json_encode($this->message,JSON_PRETTY_PRINT);
 		}
 
-		$filelog = _PATH_LOG . $this->prefix.'_'.date("Y-m-d").'.log';
+		$filelog = SELF::PATH_LOG . $this->prefix.'_'.date("Y-m-d").'.log';
 
 		$log  = '# **'.$this->prefix.'** - '.date(DATE_ATOM, time()).''.PHP_EOL.
 				$trace.PHP_EOL;
